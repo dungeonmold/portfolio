@@ -1,0 +1,479 @@
+/* -------------------------
+GLOBAL STYLE
+------------------------- */
+
+body {
+    margin: 0;
+    font-family: "Source Code Pro", monospace;
+    color: #d6d2c4;
+    line-height: 1.7;
+    font-size: 16px;
+    /* Full screen background */
+    background-image: url('images/hillshade_ndvi.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+
+/* Add dark overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Make sure content stays above overlay */
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* -------------------------
+LINKS
+------------------------- */
+
+a {
+    color: #8cc88c;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+a:hover {
+    color: #8e8f45;
+}
+
+a:visited {
+    color: #66b166;
+}
+
+/* -------------------------
+HEADER - STICKY & TRANSPARENT
+------------------------- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.5);
+    
+    /* Glass morphism effect */
+    background: rgba(11, 11, 11, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    width: 100%;
+    box-sizing: border-box;
+    transition: padding 0.3s ease, background 0.3s ease;
+}
+
+/* More compact style when scrolled */
+header.scrolled {
+    padding: 12px 20px;
+    background: rgba(11, 11, 11, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+header h1 {
+    font-family: "Cinzel", serif;
+    font-size: 2.8rem;
+    color: #bbe2bb;
+    margin: 0 0 5px 0;
+    transition: font-size 0.3s ease;
+}
+
+/* Smaller title when scrolled */
+header.scrolled h1 {
+    font-size: 2.2rem;
+}
+
+.tagline {
+    color: #8a876f;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    transition: opacity 0.3s ease, margin 0.3s ease;
+}
+
+/* Hide tagline when scrolled */
+header.scrolled .tagline {
+    opacity: 0;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #8cc88c;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+/* -------------------------
+HERO
+------------------------- */
+
+#hero {
+    margin-top:10%;
+    padding: 130px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#hero h2 {
+    font-family: "Cinzel", serif;
+    font-size: 2.4rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+#hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #bdb7a2;
+}
+
+
+/* Add this to your CSS file */
+.transparent-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 4px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* -------------------------
+SECTIONS
+------------------------- */
+
+section {
+    padding: 80px 25px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+/* Add scroll padding for anchor links */
+section[id] {
+    scroll-margin-top: 120px;
+}
+
+h2 {
+    font-family: "Cinzel", serif;
+    color: #bbe2bb;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+
+p {
+    margin-bottom: 18px;
+}
+
+/* -------------------------
+EXPERIENCE GRID
+------------------------- */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* -------------------------
+EXPERIENCE CARD
+------------------------- */
+
+.project-card {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid #2b2b2b;
+    padding: 28px;
+    transition: transform 0.25s ease, border 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: #7c6f44;
+}
+
+.project-card h3 {
+    color: #8cc88c;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.project-card strong {
+    color: #c8b98c;
+}
+
+.project-card p {
+    color: #a7a38f;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* -------------------------
+EXPERIENCE BULLETS
+------------------------- */
+
+.project-card ul {
+    margin-top: 10px;
+    padding-left: 18px;
+}
+
+.project-card li {
+    margin-bottom: 10px;
+    color: #cfcab6;
+}
+
+/* -------------------------
+SKILLS
+------------------------- */
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    max-width: 850px;
+}
+
+.skills-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #262626;
+    line-height: 1.6;
+}
+
+.skills-list strong {
+    color: #c8b98c;
+}
+
+
+/* -------------------------
+EDUCATION
+------------------------- */
+
+#education p {
+    margin-bottom: 22px;
+    color: #cfcab6;
+}
+
+#education strong {
+    color: #c8b98c;
+}
+
+/* -------------------------
+CONTACT
+------------------------- */
+
+#contact p {
+    margin: 10px 0;
+    color: #bdb7a2;
+}
+
+/* -------------------------
+FOOTER
+------------------------- */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #2e2e2e;
+    color: #6e6b5c;
+    font-size: 0.85rem;
+}
+
+/* -------------------------
+PROJECT GRID
+------------------------- */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* -------------------------
+PROJECT CARD IMAGES
+------------------------- */
+
+.project-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #2b2b2b;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.02);
+    border-color: #7c6f44;
+}
+
+/* -------------------------
+MOBILE OPTIMIZATIONS
+------------------------- */
+
+@media screen and (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 20px 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header.scrolled h1 {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    
+    nav {
+        gap: 5px;
+    }
+    
+    nav a {
+        margin: 0 5px;
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+    
+    /* Hero section */
+    #hero {
+        padding: 80px 15px;
+    }
+    
+    #hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 60px 15px;
+    }
+    
+    section[id] {
+        scroll-margin-top: 100px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Project cards */
+    .project-card {
+        padding: 20px;
+    }
+    
+    .project-card img {
+        height: 120px;
+    }
+    
+    /* Skills */
+    .skills-list li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    header.scrolled h1 {
+        font-size: 1.3rem;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+    }
+    
+    nav a {
+        font-size: 0.75rem;
+        margin: 2px;
+        padding: 4px 8px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+    
+    #hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Landscape mode */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding: 10px 15px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        display: none;
+    }
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+

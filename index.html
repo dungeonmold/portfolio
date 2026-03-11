@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ben Grubbs | Geospatial Portfolio</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Source+Code+Pro:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+<h1>Ben Grubbs, GISP</h1>
+
+<!-- <p class="tagline">
+Geospatial Data Management | Cartography | GIS Development | Remote Sensing 
+</p> -->
+
+<nav>
+<a href="index.html">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<section id="about">
+
+<div class="transparent-container">
+<h2>About</h2>
+
+
+<p>
+I am a certified GIS professional with experience in geospatial data management,
+remote sensing, and web-based GIS application development. My work
+focuses on building accessible geospatial data platforms, developing
+GIS applications, and supporting organizations in using
+geographic resources to inform decision making.
+</p>
+
+<p>
+I currently serve as a GIS Specialist with the Indiana Geographic
+Information Office, where I help manage statewide geospatial data
+infrastructure, provide state agency GIS support, and manage the IndianaMap program.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Selected Projects</h2>
+    <p>Click below to expand sections.</p>
+
+    <!-- Accordion Section 1: Web & Enterprise GIS -->
+    <button class="accordion">Web GIS</button>
+    <div class="panel">
+        <div class="projects-grid">
+            
+            <!-- INDIANAMAP -->
+            <div class="project-card">
+                <h3>IndianaMap Modernization and Data Management</h3>
+                <p>Completed data migration from legacy site, redesigned website with custom styling, implemented accessibility improvements, standardized metadata across data catalog, expanded data catalog, and maintain responsibility for day-to-day management of site.</p>
+                <p><strong>Tools:</strong> ArcGIS Hub, ArcGIS Enterprise, Web Development</p>
+                <a href="https://indianamap.org" target="_blank">Visit IndianaMap</a>
+                <br>
+                <a href="https://inmap.maps.arcgis.com/apps/dashboards/10d377fea85d4a8a8a378617766d9f92" target="_blank">View Dashboard</a>
+            </div>
+            
+            <!-- Automated Validation with Python -->
+            <div class="project-card">
+                <h3>Automated Validation of AGOL Data with Python</h3>
+                <p>Using Python (arcpy, pandas) to webscrape, validate, and publish data to ArcGIS Online.</p>
+                <p><strong>Tools:</strong> Python, ArcPy, Pandas</p>
+                <a href="https://storymaps.arcgis.com/stories/f6b55c6b8b8c45718f35bb6a4e94d181" target="_blank">View StoryMap</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Accordion Section 2: Remote Sensing & Analysis -->
+    <button class="accordion">Remote Sensing & Research</button>
+    <div class="panel">
+        <div class="projects-grid">
+            
+            <!-- TREE CANOPY ML -->
+            <div class="project-card">
+                <h3>Urban Tree Canopy Random Forest Classification</h3>
+                <p>Machine learning classification of urban tree canopy using aerial imagery and remote sensing workflows. Random Forest model trained on imagery, coupled with multispectral and elevation variables to generate canopy coverage estimates.</p>
+                <p><strong>Tools:</strong> Google Earth Engine, QGIS</p>
+                <a href="projects/urbancanopy.pdf" target="_blank">Read Report</a><br>
+                <a href="projects/UrbanCanopyCover.pdf" target="_blank">View Presentation</a>
+            </div>
+            
+            <!-- NDVI RESEARCH -->
+            <div class="project-card">
+                <h3>Kankakee River Watershed Wetland NDVI Analysis</h3>
+                <p>Remote sensing research analyzing NDVI values over time across wetlands in the Kankakee River watershed in relation to temperature and precipitation.</p>
+                <p><strong>Tools:</strong> Remote Sensing, GIS Analysis</p>
+                <a href="projects/kankakee.pdf" target="_blank">Read Research Article</a>
+            </div>
+            
+            <!-- LIONFISH RESEARCH -->
+            <div class="project-card">
+                <h3>Lionfish Invasion Research Project</h3>
+                <p>Research project examining ecological impacts of invasive lionfish and their distribution patterns in coral reef ecosystems.</p>
+                <p><strong>Tools:</strong> Ecological Analysis, Spatial Distribution</p>
+                <a href="projects/lionfish.pdf" target="_blank">Read Paper</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Accordion Section 3: Dashboards & StoryMaps -->
+    <button class="accordion">Dashboards & StoryMaps</button>
+    <div class="panel">
+        <div class="projects-grid">
+            
+            <!-- STORYMAP 1 -->
+            <div class="project-card">
+                <h3>Mapping Urban Green Spaces, Gardens, and Trees</h3>
+                <p>Interactive geographic storytelling project combining spatial analysis, maps, and narrative content using ArcGIS StoryMaps.</p>
+                <p><strong>Tools:</strong> ArcGIS Survey123 Connect, Dashboards, StoryMaps</p>
+                <a href="https://storymaps.arcgis.com/stories/2dfa99d7415f405f85128f8971f5ddc2" target="_blank">View Application</a>
+            </div>
+            
+            <!-- Botanical Dashboards -->
+            <div class="project-card">
+                <h3>Botanical Dashboards</h3>
+                <p>A couple of dashboards created to aid with plant identification. Data sourced from IN Native Plant Society and USDA Plant DB.</p>
+                <p><strong>Tools:</strong> ArcGIS Dashboards</p>
+                <a href="https://inmap-hub.maps.arcgis.com/apps/dashboards/942394cae116471bade4542e338dc599" target="_blank">View Dashboard 1</a>
+                <br>
+                <a href="https://inmap-hub.maps.arcgis.com/apps/dashboards/8cc9336ed77143289958c0b241170bad" target="_blank">View Dashboard 2</a>
+            </div>
+            
+            <!-- US Economy Dashboard -->
+            <div class="project-card">
+                <h3>US Economy Dashboard</h3>
+                <p>A dashboard to visualize GDP per capita per state and political party.</p>
+                <p><strong>Tools:</strong> ArcGIS Dashboards</p>
+                <a href="https://blackhole.maps.arcgis.com/apps/dashboards/1e3b99a47b954820b8b11ad95df79d13" target="_blank">View Application</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Accordion Section 4: Web Applications -->
+    <button class="accordion">Web Applications</button>
+    <div class="panel">
+        <div class="projects-grid">
+            
+            <!-- Land Use Change Calculator -->
+            <div class="project-card">
+                <h3>Land Use Change Calculator</h3>
+                <p>The tool estimates carbon sequestration using data derived from IPCC reports on land use and carbon sequestration, as well as additional research such as the State of the World's Forests (2001) and the Wageningen Environmental Research report (2018) on carbon stocks.</p>
+                <p><strong>Tools:</strong> Web Development, JavaScript</p>
+                <a href="https://interspecific.github.io/LandUseConversion/" target="_blank">View Application</a>
+            </div>
+            
+            <!-- Rainbow Roadmap -->
+            <div class="project-card">
+                <h3>Rainbow Roadmap</h3>
+                <p>An LGBTQ+ friendly map and resource hub aimed at providing information for decision making for individuals while traveling or relocating.</p>
+                <p><strong>Tools:</strong> Web Development, GIS</p>
+                <a href="https://rainbowroadmap.org/" target="_blank">View Application</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Accordion Section 5: Creative & Visual Projects -->
+    <button class="accordion">Creative Projects</button>
+    <div class="panel">
+        <div class="projects-grid">
+            
+            <!-- CREATIVE CARTOGRAPHY -->
+            <div class="project-card">
+                <h3>Creative Map Collection</h3>
+                <p>Collection of thematic and creative maps designed for fun and exploration. Includes maps of McCormick's Creek, Brownsburg, Indian Trail, Stardew Valley, Broad Ripple, and Fishers.</p>
+                <p><strong>Tools:</strong> Cartography, Map Design</p>
+                <a href="cartography.html" class="project-link">View Map Collection →</a>
+            </div>
+            
+            <!-- DRONE PHOTOGRAPHY -->
+            <div class="project-card">
+                <h3>Drone Photography</h3>
+                <p>Drone-based aerial photography and mapping projects. A collection of aerial imagery captured for fun and creative exploration.</p>
+                <p><strong>Tools:</strong> Drone Photography, Aerial Mapping</p>
+                <a href="projects/maps/drone-photography-gallery.pdf" target="_blank">View Gallery</a>
+            </div>
+            
+        </div>
+    </div>
+
+</section>
+
+<!-- Accordion CSS -->
+<style>
+.accordion {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #bbe2bb;
+    cursor: pointer;
+    padding: 18px 25px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid #2b2b2b;
+    border-radius: 8px;
+    margin: 10px 0 0 0;
+    font-family: "Cinzel", serif;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.accordion:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: #7c6f44;
+}
+
+.accordion.active {
+    background-color: rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+}
+
+.accordion:after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #d4af37;
+    float: right;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.accordion.active:after {
+    content: '−';
+}
+
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #2b2b2b;
+    border-right: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 15px;
+}
+
+.panel .projects-grid {
+    padding: 25px;
+    margin: 0;
+}
+
+/* Ensure project cards maintain their styling inside accordion */
+.panel .project-card {
+    background: rgba(0, 0, 0, 0.5);
+    margin-bottom: 0;
+}
+
+/* Style for project links */
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #d4af37;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #8cc88c;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .accordion {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .panel .projects-grid {
+        padding: 15px;
+    }
+}
+</style>
+
+<!-- Accordion JavaScript -->
+<script>
+// Get all accordion buttons
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+// Loop through all accordion buttons
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        // Toggle active class on the button
+        this.classList.toggle("active");
+        
+        // Get the panel (next sibling element)
+        var panel = this.nextElementSibling;
+        
+        // Check if panel is currently open
+        if (panel.style.maxHeight) {
+            // If open, close it
+            panel.style.maxHeight = null;
+        } else {
+            // If closed, open it by setting max-height to scroll height
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
+}
+</script>
+
+<!-- GITHUB
+
+<div class="project-card">
+
+<h3>GIS Programming Projects</h3>
+
+<img src="images/projects/github.jpg" alt="GitHub projects">
+
+<p>
+Collection of programming projects including geospatial automation,
+data analysis, and GIS workflow tools written primarily in Python.
+</p>
+
+<p><strong>Tools:</strong> Python, ArcPy, Pandas</p>
+
+<a href="https://github.com/yourusername" target="_blank">Visit GitHub</a>
+
+</div> -->
+
+
+
+
+
+
+
+
+</section>
+
+
+
+<section id="experience">
+
+<h2>Professional Experience</h2>
+
+<div class="project-grid">
+
+
+<div class="project-card">
+
+<h3>GIS Specialist</h3>
+
+<p><strong>Indiana Geographic Information Office (IGIO)</strong><br>
+Indianapolis, IN | May 2024 – Present
+</p>
+
+<ul>
+<li>Manage and maintain the IndianaMap.org geospatial data catalog and website (400+ datasets)</li>
+<li>Led redesign and modernization of IndianaMap platform in 2024 and 2025</li>
+<li>Develop ArcGIS dashboards, web apps, and Survey123 tools for state agencies</li>
+<li>Utilize Python scripting for geospatial data management and analysis</li>
+<li>Provide technical support for AGOL, ArcGIS Enterprise, and ArcGIS Pro users</li>
+<li>Develop GIS accessibility documentation aligned with WCAG standards</li>
+</ul>
+
+</div>
+
+
+<div class="project-card">
+
+<h3>Environmental Manager</h3>
+
+<p><strong>Indiana Department of Natural Resources</strong><br>
+Indianapolis, IN | Oct 2019 – May 2024
+</p>
+
+<ul>
+<li>Evaluated permit applications for compliance with Flood Control Act and Lake Preservation Act</li>
+<li>Developed Python scripts, ArcGIS Pro toolboxes, and workflow templates</li>
+<li>Served as primary GIS support for regulatory review team</li>
+<li>Integrated GIS analysis into environmental permitting workflows</li>
+</ul>
+
+</div>
+
+
+<div class="project-card">
+
+<h3>Environmental Scientist</h3>
+
+<p><strong>Davey Resource Group</strong><br>
+Indianapolis, IN | Jun 2018 – Oct 2019
+</p>
+
+<ul>
+<li>Managed field crews conducting wetland mitigation and restoration projects</li>
+<li>Conducted urban forestry surveys for municipal tree management planning</li>
+<li>Performed wetland delineations and prepared regulatory mitigation reports</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="skills">
+<div class="transparent-container">
+
+<h2>Technical Skills</h2>
+
+
+<ul class="skills-list">
+
+<li><strong>GIS & Remote Sensing:</strong> ArcGIS Pro, ArcGIS Online, ArcGIS Enterprise, QGIS, Google Earth Engine, Drone operations</li>
+
+<li><strong>Programming & Web Development:</strong> Python (arcpy, pandas), ArcGIS API for JavaScript, REST APIs, HTML, CSS, JavaScript</li>
+
+<li><strong>Enterprise GIS & IT:</strong> ArcGIS Enterprise administration, Server Manager, Portal workspace management, AWS S3</li>
+
+<li><strong>Data & Analysis:</strong> Statistical analysis, geospatial automation, spreadsheet automation with Python and Excel</li>
+
+<li><strong>Design & Visualization:</strong> Cartography, Snagit, Canva, Inkscape, GIMP</li>
+
+</ul>
+
+</section>
+
+
+<section id="education">
+<div class="transparent-container">
+
+<h2>Education</h2>
+
+<p>
+<strong>Graduate Certificate in Geographic Information Science</strong><br>
+Oregon State University (eCampus)<br>
+Jan 2023 – May 2024
+</p>
+
+<p>
+<strong>Bachelor of Science in Public Affairs</strong><br>
+Environmental Management<br>
+Indiana University – Bloomington<br>
+Aug 2012 – May 2016
+</p>
+
+<p>
+Additional academic experience included working as a lab technician,
+receiving a research grant for field work in Bonaire (Dutch Caribbean),
+serving as a teaching assistant for a study abroad program in Bonaire,
+and studying abroad in South Africa.
+</p>
+
+</section>
+
+
+<section id="contact">
+<div class="transparent-container">
+
+<h2>Contact</h2>
+
+<p>Email: benjamin.grubbs93@gmail.com</p>
+
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Ben Grubbs</p>
+
+</footer>
+
+</body>
+</html>
+
+
+
+<script>
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+</script> */

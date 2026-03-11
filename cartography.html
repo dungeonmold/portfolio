@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Cartography Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Map Collection Page Styles */
+        .map-collection-header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+        
+        .map-collection-header h1 {
+            font-family: "Cinzel", serif;
+            color: #bbe2bb;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .map-collection-header p {
+            color: #bdb7a2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Grid Layout */
+        .map-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .map-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #2b2b2b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .map-card:hover {
+            transform: translateY(-8px);
+            border-color: #7c6f44;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Map Preview/Thumbnail Area */
+        .map-preview {
+            width: 100%;
+            height: 220px;
+            background: #1a1a1a;
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px solid #2b2b2b;
+            overflow: hidden;
+        }
+        
+        .map-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .map-card:hover .map-thumbnail {
+            transform: scale(1.05);
+        }
+        
+        /* Placeholder for maps without thumbnails */
+        .map-preview-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: #d4af37;
+        }
+        
+        .placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+        
+        .placeholder-text {
+            font-family: "Cinzel", serif;
+            font-size: 1rem;
+            color: #8a876f;
+        }
+        
+        /* Overlay for preview click */
+        .map-preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .map-preview:hover .map-preview-overlay {
+            opacity: 1;
+        }
+        
+        .preview-icon {
+            background: rgba(212, 175, 55, 0.9);
+            color: #0b0b0b;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .map-preview:hover .preview-icon {
+            transform: translateY(0);
+        }
+        
+        /* Map Information */
+        .map-info {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .map-title {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin: 0 0 5px 0;
+            font-family: "Cinzel", serif;
+        }
+        
+        .map-location {
+            color: #8a876f;
+            font-size: 0.9rem;
+            margin: 0 0 15px 0;
+            font-style: italic;
+        }
+        
+        /* Description placeholder */
+        .map-description {
+            color: #bdb7a2;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            flex: 1;
+        }
+        
+        .description-placeholder {
+            color: #6e6b5c;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #7c6f44;
+        }
+        
+        /* Action Buttons */
+        .map-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            border-top: 1px solid #2b2b2b;
+            padding-top: 20px;
+        }
+        
+        .view-btn, .download-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .view-btn {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .view-btn:hover {
+            background: rgba(212, 175, 55, 0.25);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+        
+        .download-btn {
+            background: rgba(140, 200, 140, 0.15);
+            color: #8cc88c;
+            border: 1px solid rgba(140, 200, 140, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: rgba(140, 200, 140, 0.25);
+            border-color: #8cc88c;
+            transform: translateY(-2px);
+        }
+        
+        /* Modal for full-screen viewing */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 2000;
+            padding: 30px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-content {
+            flex: 1;
+            width: 100%;
+            height: calc(100% - 80px);
+            border: none;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+            padding: 0 10px;
+        }
+        
+        .modal-header h2 {
+            color: #d4af37;
+            margin: 0;
+            font-family: "Cinzel", serif;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            padding: 0 15px;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #d4af37;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0 40px 20px;
+            color: #9e9b7f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #d4af37;
+        }
+        
+        .back-link::before {
+            content: "← ";
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .map-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .modal {
+                padding: 15px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .map-collection-header h1 {
+                font-size: 2rem;
+            }
+            
+            .map-actions {
+                flex-direction: column;
+            }
+            
+            .map-preview {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ben Grubbs</h1>
+        <div class="tagline">GIS Professional</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="cartography.html" style="color: #d4af37;">Creative Cartography</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+<main>
+    <div class="map-collection-header">
+        <h1>Creative Cartography Collection</h1>
+        <p>A collection of thematic and creative maps designed for fun and exploration. Specific locations have been redacted in black.</p>
+    </div>
+    
+    <div class="map-list-simple">
+        
+        <!-- McCormicks Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">McCormick's Creek</h3>
+                <p class="map-location">McCormick's Creek State Park, Indiana</p>
+                
+                <div class="map-description">
+                    This map was created by me to be used for the IGIO 2025 calendar. The map depicts McCormick's Creek State Park, showcasing detailed topographic information. Elevation relief was rendered using the "Papercut" style as promoted by John Nelson with ESRI.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/mccormicks.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Brownsburg Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">Brownsburg</h3>
+                <p class="map-location">Brownsburg, Indiana</p>
+                
+                <div class="map-description">
+                    This map depicts the Town of Brownsburg, IN and was created in the spirit of Tolkien fantasy maps.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/brownsburg.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Indian Trail Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">Indian Trail</h3>
+                <p class="map-location">Indian Trail, North Carolina</p>
+                
+                <div class="map-description">
+                    Description needed: Urban development patterns, transportation networks, and community features.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/indiantrail.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stardew Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">Stardew Valley</h3>
+                <p class="map-location">Fan Map - Stardew Valley</p>
+                
+                <div class="map-description">
+                    Description needed: Creative interpretation of Pelican Town, farm layouts, and seasonal landscapes.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/stardew.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Broad Ripple Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">Broad Ripple</h3>
+                <p class="map-location">Broad Ripple Village, Indianapolis</p>
+                
+                <div class="map-description">
+                    Description needed: Village district, Monon Trail, canal, local businesses, and cultural landmarks.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/broadripple.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fishers Map -->
+        <div class="map-entry-simple">
+            <div class="map-info">
+                <h3 class="map-title">Fishers</h3>
+                <p class="map-location">Fishers, Indiana</p>
+                
+                <div class="map-description">
+                    Description needed: Municipal boundaries, parks, trail systems, and notable landmarks.
+                </div>
+                
+                <div class="map-actions">
+                    <a href="projects/fishers.pdf" target="_blank" class="view-btn">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
+
+<!-- Simple styles for the map list -->
+<style>
+.map-collection-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.map-collection-header h1 {
+    font-family: "Cinzel", serif;
+    color: #bbe2bb;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.map-collection-header p {
+    color: #bdb7a2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.map-list-simple {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.map-entry-simple {
+    background: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #2b2b2b;
+    transition: all 0.3s ease;
+}
+
+.map-entry-simple:hover {
+    border-color: #7c6f44;
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateX(5px);
+}
+
+.map-title {
+    color: #d4af37;
+    font-size: 1.4rem;
+    margin: 0 0 5px 0;
+    font-family: "Cinzel", serif;
+}
+
+.map-location {
+    color: #8a876f;
+    font-size: 0.95rem;
+    margin: 0 0 15px 0;
+    font-style: italic;
+}
+
+.map-description {
+    color: #bdb7a2;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid #7c6f44;
+}
+
+.map-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-btn {
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: inline-block;
+}
+
+.view-btn:hover {
+    background: rgba(212, 175, 55, 0.25);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 600px) {
+    .map-collection-header h1 {
+        font-size: 2rem;
+    }
+    
+    .map-entry-simple {
+        padding: 20px;
+    }
+    
+    .map-title {
+        font-size: 1.2rem;
+    }
+    
+    .map-actions {
+        justify-content: stretch;
+    }
+    
+    .view-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+        
+        <!-- Modal for full-screen viewing -->
+        <div id="pdfModal" class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Map Viewer</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <iframe id="modalFrame" class="modal-content"></iframe>
+        </div>
+        
+        <a href="index.html" class="back-link">Back to Portfolio</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ben Grubbs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(pdfPath, title) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalFrame').src = pdfPath;
+            document.getElementById('pdfModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('pdfModal').classList.remove('active');
+            document.getElementById('modalFrame').src = '';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('pdfModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
